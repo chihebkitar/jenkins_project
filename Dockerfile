@@ -1,15 +1,15 @@
-ARG version="latest" 
+ARG version="latest"
 FROM nginx:${version}
 
-LABEL maintainer="Kitar chiheb"
+LABEL maintainer="Kitar Chiheb"
 
-RUN apt-get update && \ 
-    apt-get install -y git \
-    && apt-get clean \ 
-    && rm-rf /var/lib/apt/lists/*
+RUN apt-get update && \
+    apt-get install -y git && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*  # Fixed the rm command
 
-RUN rm -rf /usr/share/nginx/html/* \
-    && git clone https://github.com/chihebkitar/static-website.git /usr/share/nginx/html/ 
+RUN rm -rf /usr/share/nginx/html/* && \
+    git clone https://github.com/chihebkitar/static-website.git /usr/share/nginx/html/
 
 EXPOSE 80
 
